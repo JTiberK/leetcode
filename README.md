@@ -1,1 +1,3 @@
 # leetcode
+
+Happy coding! 😊✨
