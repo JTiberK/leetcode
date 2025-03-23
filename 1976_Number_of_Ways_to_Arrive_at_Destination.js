@@ -1,3 +1,6 @@
+/**   SOLUCION  ****************************************(❁´◡`❁)*****************************/
+
+
 /**
  * @param {number} n
  * @param {number[][]} roads
@@ -19,13 +22,14 @@ var countPaths = function(n, roads) {
     distances[0] = 0;
     ways[0] = 1;
 
-    // Cola de prioridad (min-heap)
-    let pq = new MinPriorityQueue({ priority: (x) => x.time });
-    pq.enqueue({ node: 0, time: 0 });
+    // Cola de prioridad (min-heap) implementada manualmente
+    let pq = [[0, 0]]; // [time, node]
 
     // Paso 3: Algoritmo de Dijkstra modificado
-    while (!pq.isEmpty()) {
-        let { element: { node: currentNode, time: currentTime } } = pq.dequeue();
+    while (pq.length > 0) {
+        // Extraer el nodo con el menor tiempo usando un heap mínimo
+        pq.sort((a, b) => a[0] - b[0]); // Ordenar por tiempo
+        let [currentTime, currentNode] = pq.shift();
 
         // Iterar sobre los vecinos del nodo actual
         for (let [neighbor, travelTime] of graph[currentNode]) {
@@ -35,7 +39,7 @@ var countPaths = function(n, roads) {
             if (newTime < distances[neighbor]) {
                 distances[neighbor] = newTime;
                 ways[neighbor] = ways[currentNode]; // Reiniciar el conteo de formas
-                pq.enqueue({ node: neighbor, time: newTime });
+                pq.push([newTime, neighbor]);
             }
             // Si encontramos otro camino con el mismo tiempo mínimo
             else if (newTime === distances[neighbor]) {
