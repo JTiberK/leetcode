@@ -1,6 +1,8 @@
+
 ### USER
 Parece que este código JavaScript da error:
 
+```
 Runtime Error
 /.nvm/versions/node/v22.14.0/lib/node_modules/@datastructures-js/priority-queue/src/minPriorityQueue.js:20
       throw new Error('MinPriorityQueue constructor requires a callback for object values');
@@ -24,3 +26,4 @@ n =
 7
 roads =
 [[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]]
+```
